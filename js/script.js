@@ -28,8 +28,36 @@ function playRound(playerSelection, computerSelection) {
 // This function calls the playRound function and keeps score and reports
 // the winner at the end of the game
 function game() {
+    let playerWins = 0;
+    let computerWins = 0;
+    let draws = 0;
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt('Rock, Paper, or Scissors?');
+        const computerSelection = getComputerChoice();
+        console.log(`Round: ${i + 1}`);
+        console.log(`Player picks: ${playerSelection}.`);
+        console.log(`Computer picks: ${computerSelection}.`);
+        let results = playRound(playerSelection, computerSelection);
+        console.log(results);
+        if (results.slice(0,8) === 'You win!') {
+            playerWins++;
+        } else if (results.slice(0,9) === 'You lose!') {
+            computerWins++;
+        } else {
+            draws++;
+        }
+    }
+    if (playerWins > computerWins) {
+        console.log(`Player wins!\nPlayer Wins: ${playerWins}\nComputer Wins: ${computerWins}\nDraws: ${draws}`);
+    } else if (computerWins > playerWins) {
+        console.log(`Computer wins!\nPlayer Wins: ${playerWins}\nComputer Wins: ${computerWins}\nDraws: ${draws}`);
+    } else {
+        console.log(`It's a draw!\nPlayer Wins: ${playerWins}\nComputer Wins: ${computerWins}\nDraws: ${draws}`);
 
+    }
 }
+
+game();
 
 // const playerSelection = 'ROCK';
 // const computerSelection = getComputerChoice();
