@@ -1,8 +1,8 @@
 let playerWins = 0;
 let computerWins = 0;
 let draws = 0;
+const NUM_ROUNDS = 5;
 
-// This function randomly returns 'rock', 'paper', 'scissors'
 function getComputerSelection() {
     switch(Math.floor(Math.random() * 3)) {
         case 0:
@@ -22,8 +22,6 @@ function getPlayerSelection() {
     return x;
 }
 
-// This function takes in the playerSelection and computerSelection and
-// returns the winner of the round
 function getRoundWinner(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return 'draw'
@@ -36,8 +34,6 @@ function getRoundWinner(playerSelection, computerSelection) {
     }
 }
 
-// This function takes in the current round, playerSelection and 
-// computerSelection and displays the results
 function displayRound(round, playerSelection, computerSelection, winner) {
     console.log(`Round: ${round + 1}`);
     console.log(`Player picks ${playerSelection}.`);
@@ -53,8 +49,6 @@ function displayRound(round, playerSelection, computerSelection, winner) {
     }
 }
 
-// This function takes in the rounds winner and
-// updates the score
 function updateScore(winner) {
     switch(winner) {
         case 'player':
@@ -68,12 +62,10 @@ function updateScore(winner) {
     }
 }
 
-// This function displays the current score
 function displayScore() {
     console.log(`Player: ${playerWins}\nComputer: ${computerWins}\nDraws: ${draws}`);
 }
 
-// This function displays the winner of the game
 function displayWinner() {
     if (playerWins > computerWins) {
         console.log('PLAYER WINS');
@@ -86,7 +78,6 @@ function displayWinner() {
     }
 }
 
-// This function plays a single round of rock paper scissors
 function playRound(round){ 
     const playerSelection = getPlayerSelection();
     const computerSelection = getComputerSelection();
@@ -96,10 +87,8 @@ function playRound(round){
     displayScore();
 }
 
-// This function calls the playRound function and keeps score and reports
-// the winner at the end of the game
 function game() {
-    for (let round = 0; round < 5; round++) {
+    for (let round = 0; round < NUM_ROUNDS; round++) {
         playRound(round);
     }
     displayWinner();
