@@ -3,6 +3,10 @@ let computerWins = 0;
 let draws = 0;
 const NUM_ROUNDS = 5;
 
+let playerScore = document.querySelector('.playerScore');
+let computerScore = document.querySelector('.computerScore');
+let message = document.querySelector('.message');
+
 function getComputerSelection() {
     switch(Math.floor(Math.random() * 3)) {
         case 0:
@@ -34,10 +38,7 @@ function getRoundWinner(playerSelection, computerSelection) {
     }
 }
 
-function displayRound(round, playerSelection, computerSelection, winner) {
-    console.log(`Round: ${round + 1}`);
-    console.log(`Player picks ${playerSelection}.`);
-    console.log(`Computer picks ${computerSelection}.`);
+function displayRound(playerSelection, computerSelection, winner) {
     if (winner === 'player') {
         console.log('You won this round.');
     } else if (winner === 'computer') {
@@ -62,6 +63,11 @@ function updateScore(winner) {
     }
 }
 
+function updateScoreBoard() {
+    playerScore.textContent = playerWins;
+    computerScore.textContent = computerWins;
+}
+
 function displayScore() {
     console.log(`Player: ${playerWins}\nComputer: ${computerWins}\nDraws: ${draws}`);
 }
@@ -78,20 +84,29 @@ function displayWinner() {
     }
 }
 
-function playRound(round){ 
-    const playerSelection = getPlayerSelection();
+function playRound(playerSelection){ 
     const computerSelection = getComputerSelection();
     let winner = getRoundWinner(playerSelection, computerSelection);
     updateScore(winner);
-    displayRound(round, playerSelection, computerSelection, winner);
+    updateScoreBoard();
+    displayRound(playerSelection, computerSelection, winner);
     displayScore();
 }
 
 function game() {
-    for (let round = 0; round < NUM_ROUNDS; round++) {
-        playRound(round);
-    }
-    displayWinner();
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (playerWins < 5 && computerWins < 5) {
+                playRound(button.id);
+            }
+            else {
+                displayWinner();
+                return;
+            }
+        });
+    });
+
 }
 
 game();
