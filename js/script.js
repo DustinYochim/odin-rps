@@ -3,6 +3,7 @@ let computerWins = 0;
 let draws = 0;
 const NUM_ROUNDS = 5;
 
+const buttons = document.querySelectorAll('button');
 let playerScore = document.querySelector('.playerScore');
 let computerScore = document.querySelector('.computerScore');
 let message = document.querySelector('.message');
@@ -16,14 +17,6 @@ function getComputerSelection() {
         case 2: 
             return 'scissors';
     }
-}
-
-function getPlayerSelection() {
-    let x = prompt('Rock, Paper, or Scissors?').toLowerCase();
-    while (x !== 'rock' && x !== 'paper' && x !== 'scissors') {
-        x = prompt('You must enter Rock, Paper, or Scissors.').toLowerCase();
-    }
-    return x;
 }
 
 function getRoundWinner(playerSelection, computerSelection) {
@@ -40,11 +33,15 @@ function getRoundWinner(playerSelection, computerSelection) {
 
 function displayRound(playerSelection, computerSelection, winner) {
     if (winner === 'player') {
-        console.log('You won this round.');
+        message.textContent = `Let's go! You won. ${playerSelection.charAt(0).toUpperCase() + 
+                                playerSelection.slice(1)} beats ${computerSelection.charAt(0).toUpperCase() + 
+                                computerSelection.slice(1)}.`;
     } else if (winner === 'computer') {
-        console.log('Computer wins this round.');
+        message.textContent = `Oh no! You lost. ${computerSelection.charAt(0).toUpperCase() + 
+            computerSelection.slice(1)} beats ${playerSelection.charAt(0).toUpperCase() + 
+                playerSelection.slice(1)}.`;
     } else if (winner === 'draw') {
-        console.log('This round is a draw.');
+        message.textContent = `This round is a draw.`;
     } else {
         alert('Alert in displayRound function!!');
     }
@@ -68,19 +65,19 @@ function updateScoreBoard() {
     computerScore.textContent = computerWins;
 }
 
-function displayScore() {
-    console.log(`Player: ${playerWins}\nComputer: ${computerWins}\nDraws: ${draws}`);
-}
-
 function displayWinner() {
     if (playerWins > computerWins) {
-        console.log('PLAYER WINS');
+        message.textContent = 'You won!';
     } else if (computerWins > playerWins) {
-        console.log('COMPUTER WINS');
-    } else if (playerWins === computerWins) {
-        console.log("It's a tie!");
+        message.textContent = 'You lost...'
+    } 
+}
+
+function checkForWin() {
+    if (playerWins >= 5 || computerWins >= 5) {
+        return true;
     } else {
-        alert('Problem in displayWinner() function');
+        return false;
     }
 }
 
@@ -90,23 +87,15 @@ function playRound(playerSelection){
     updateScore(winner);
     updateScoreBoard();
     displayRound(playerSelection, computerSelection, winner);
-    displayScore();
 }
 
-function game() {
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            if (playerWins < 5 && computerWins < 5) {
-                playRound(button.id);
-            }
-            else {
-                displayWinner();
-                return;
-            }
-        });
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (playerWins < 5 && computerWins < 5) {
+            playRound(button.id);
+        } else {
+            playerWins > computerWins ? alert('You win!') : alert('You lose!');
+        }
     });
-
-}
-
-game();
+});
