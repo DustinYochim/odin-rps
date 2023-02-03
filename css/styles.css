@@ -1,6 +1,7 @@
-@font-face {
-    font-family: 'Press Start 2P';
-    src: url(/fonts/PressStart2P-Regular.ttf);
+
+
+body * {
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -14,7 +15,7 @@ body {
 
 header {
     font-size: 20px;
-    font-family: 'Press Start 2P', cursive;
+    font-weight: bold;
     color: #fac650;
     text-align: center;
     box-shadow: 20px;
@@ -33,15 +34,15 @@ header {
     background-color: #111720;
     width: 60vw;
     border-radius: 15px;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .scoreboard-title {
-    font-family: 'Press Start 2P', cursive, sans-serif;
     font-size: 28px;
+    font-weight: 500;
     color: #fac650;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -49,16 +50,17 @@ header {
     display: flex;
     justify-content: center;
     gap: 100px;
+    border-radius: 15px;
 }
 
 .player,
 .computer {
     background-color: rgb(11, 14, 20, .8);
-    font-family: 'Press Start 2P', cursive, sans-serif;
-    margin: 30px;
-    height: 200px;
-    width: 200px;
-    font-size: 1.5em;
+    /* margin: 30px; */
+    height: 150px;
+    width: 150px;
+    padding: 20px;
+    font-size: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -72,16 +74,15 @@ header {
 
 .player-text,
 .computer-text {
-    padding-top: 15px;
+    /* padding-top: 15px; */
     color: #fac650;
 }
 
 .message {
     font-size: 14px;
-    font-family: 'Press Start 2P', cursive, sans-serif;
     color: #fac650;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 30px;
 }
 
@@ -101,7 +102,7 @@ header {
     width: 200px;
     font-size: 70px;
     margin: 50px;
-    margin-top: 100px;
+    margin-top: 50px;
     padding: 50px;
     border: none;
     border-radius: 10px;
