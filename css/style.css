@@ -1,0 +1,202 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --body-bg: hsl(0, 0%, 12%);
+}
+
+html {
+  color-scheme: dark light;
+}
+
+body {
+  background: var(--body-bg);
+  color: white;
+  font-family: system-ui;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.wrapper {
+  max-width: 50rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.site-title {
+  font-size: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, #00f260, #0575e6);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  text-align: center;
+}
+
+section {
+  padding-block: 1rem;
+}
+
+.wavy {
+  /* mask created with 
+    https://css-generators.com/wavy-shapes/ */
+
+  background: linear-gradient(to right, #00f260, #0575e6);
+
+  --mask: radial-gradient(50.39px at 50% 68.75px, #000 99%, #0000 101%)
+      calc(50% - 50px) 0/100px 51% repeat-x,
+    radial-gradient(50.39px at 50% -43.75px, #0000 99%, #000 101%) 50% 25px/100px
+      calc(51% - 25px) repeat-x,
+    radial-gradient(50.39px at 50% calc(100% - 68.75px), #000 99%, #0000 101%)
+      calc(50% - 50px) 100%/100px 51% repeat-x,
+    radial-gradient(50.39px at 50% calc(100% + 43.75px), #0000 99%, #000 101%)
+      50% calc(100% - 25px) / 100px calc(51% - 25px) repeat-x;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
+.scoreboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5rem;
+  padding-bottom: 3rem;
+}
+
+.player,
+.computer {
+  border: 2px solid white;
+  border-radius: 8px;
+  height: 150px;
+  width: 150px;
+  font-size: 1.5rem;
+  background: var(--body-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-score,
+.computer-score {
+  font-size: 4rem;
+}
+
+.message {
+  text-align: center;
+  padding-bottom: 3rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+/* CSS */
+.button-64 {
+  align-items: center;
+  background-image: linear-gradient(to right, #00f260, #0575e6);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+}
+
+.button-64 span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button-64:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+
+.snarky-message {
+  text-align: center;
+  padding-top: 5rem;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.play-again {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 100px;
+  margin-top: 1rem;
+  border-radius: 8px;
+  border: 1px solid white;
+}
+
+.play-again:hover {
+  background: black;
+  color: white;
+}
+footer {
+  margin-top: auto;
+  text-align: center;
+  text-decoration: none;
+  color: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
+footer img {
+  height: 25px;
+  width: auto;
+}
