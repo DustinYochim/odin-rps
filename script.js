@@ -5,7 +5,7 @@ const NUM_ROUNDS = 5;
 
 let loserMessages = [
   "Looks like rock, paper, and scissors all beat you this time.",
-  "Good effort, but you missed the mark,",
+  "Good effort, but you missed the mark.",
   "You should have gone with your guy, or maybe listened to mine.",
   "Looks like luck wasn't on your side this round.",
   "I suggest you take some time to practice before facing me again.",
