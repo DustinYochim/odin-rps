@@ -12,5 +12,50 @@
   </head>
   <body>
     <header><h1>Rock Paper Scissors</h1></header>
+    <main>
+      <div class="scoreboard">
+        <div class="player-score">
+          <h2>Player</h2>
+          <p id="player-score">0</p>
+        </div>
+        <div class="computer-score">
+          <h2>Computer</h2>
+          <p id="computer-score">0</p>
+        </div>
+      </div>
+      <div class="instructions">
+        <h2>Instructions</h2>
+        <p>
+          The rules are simple. You will be playing against the computer. You
+          will each choose either rock, paper, or scissors. The winner is
+          determined by the following rules:
+        </p>
+        <ul>
+          <li>Rock beats scissors</li>
+          <li>Scissors beats paper</li>
+          <li>Paper beats rock</li>
+        </ul>
+        <p>
+          If you and the computer choose the same thing, it's a tie. You will
+          play five rounds. The player with the most wins at the end of five
+          rounds is the winner.
+        </p>
+      </div>
+
+      <div class="button-container" id="buttonContainer">
+        <button class="button" id="rock">Rock</button>
+        <button class="button" id="paper">Paper</button>
+        <button class="button" id="scissors">Scissors</button>
+      </div>
+      <div class="round-details">
+        <h2>Round Details</h2>
+        <p id="round-details"></p>
+      </div>
+      <div class="winning-message" id="winningMessage">
+        <div class="data-winning-message-text"></div>
+        <button class="button" id="play-again">Play Again</button>
+      </div>
+    </main>
+    <footer>Copyright © 2023 Dustin Yochim</footer>
   </body>
 </html>

@@ -6,21 +6,27 @@ const Game = (function () {
   let playerChoice = null;
   let computerChoice = null;
 
-  function getComputerChoice() {
+  function setPlayerChoice(choice) {
+    // console.log("setPlayerChoice() called");
+    if (choice === undefined) {
+      playerChoice = prompt("Rock, paper, or scissors?").toLowerCase();
+    } else {
+      playerChoice = choice;
+    }
+  }
+
+  function setComputerChoice() {
     const options = ["rock", "paper", "scissors"];
     const randomIndex = Math.floor(Math.random() * options.length);
-    return options[randomIndex];
+    computerChoice = options[randomIndex];
+  }
+
+  function getComputerChoice() {
+    return computerChoice;
   }
 
   function getPlayerChoice() {
-    const options = ["rock", "paper", "scissors"];
-    const playerChoice = prompt("Rock, paper, or scissors?").toLowerCase();
-    if (options.includes(playerChoice)) {
-      return playerChoice;
-    } else {
-      alert("Invalid choice. Try again.");
-      return getPlayerChoice();
-    }
+    return playerChoice;
   }
 
   function updateScore() {
@@ -55,7 +61,11 @@ const Game = (function () {
     }
   }
 
-  function showScore() {
+  function isGameOver() {
+    return playerWins === 5 || computerWins === 5;
+  }
+
+  function logScore() {
     // console.log("showScore() called");
     console.log(`Player: ${playerWins}`);
     console.log(`Computer: ${computerWins}`);
@@ -68,11 +78,21 @@ const Game = (function () {
 
   function playRound() {
     // console.log("playRound() called");
-    playerChoice = getPlayerChoice();
-    computerChoice = getComputerChoice();
+    setPlayerChoice();
+    setComputerChoice();
     updateScore();
     showRoundResults();
-    showScore();
+    logScore();
+  }
+
+  function logWinner() {
+    if (playerWins > computerWins) {
+      console.log("Player wins the game!");
+    } else if (playerWins < computerWins) {
+      console.log("Computer wins the game!");
+    } else {
+      console.log("It's a tie!");
+    }
   }
 
   function startGame() {
@@ -80,6 +100,7 @@ const Game = (function () {
       showRound(i);
       playRound();
     }
+    logWinner();
   }
 
   function reset() {
@@ -88,8 +109,21 @@ const Game = (function () {
     ties = 0;
   }
 
+  function hello() {
+    console.log("Hello from Game");
+  }
+
   return {
     startGame,
+    setPlayerChoice,
+    setComputerChoice,
+    getPlayerChoice,
+    getComputerChoice,
+    updateScore,
+    isGameOver,
+    getPlayerWins: () => playerWins,
+    getComputerWins: () => computerWins,
+    reset,
   };
 })();
 
