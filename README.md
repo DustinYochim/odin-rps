@@ -39,7 +39,3 @@ You can play the game here: https://dustinyochim.github.io/odin-rps/
 ## Acknowledgements
 
 This project was inspired by The Odin Project curriculum.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
