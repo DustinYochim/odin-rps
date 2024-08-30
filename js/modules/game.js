@@ -7,7 +7,6 @@ const Game = (function () {
   let computerChoice = null;
 
   function setPlayerChoice(choice) {
-    // console.log("setPlayerChoice() called");
     if (choice === undefined) {
       playerChoice = prompt("Rock, paper, or scissors?").toLowerCase();
     } else {
@@ -30,7 +29,6 @@ const Game = (function () {
   }
 
   function updateScore() {
-    // console.log("updateScore() called");
     if (playerChoice === computerChoice) {
       ties++;
     } else if (
@@ -43,56 +41,18 @@ const Game = (function () {
       computerWins++;
     }
   }
-  function showRoundResults() {
-    // console.log("showRoundResults() called");
-    console.log(
-      `Player chose ${playerChoice}. Computer chose ${computerChoice}.`
-    );
-    if (playerChoice === computerChoice) {
-      console.log("It's a tie!");
-    } else if (
-      (playerChoice === "rock" && computerChoice === "scissors") ||
-      (playerChoice === "paper" && computerChoice === "rock") ||
-      (playerChoice === "scissors" && computerChoice === "paper")
-    ) {
-      console.log("Player wins!");
-    } else {
-      console.log("Computer wins!");
-    }
-  }
 
   function isGameOver() {
     return playerWins === 5 || computerWins === 5;
   }
 
-  function logScore() {
-    // console.log("showScore() called");
-    console.log(`Player: ${playerWins}`);
-    console.log(`Computer: ${computerWins}`);
-    console.log(`Ties: ${ties}`);
-  }
-
-  function showRound(i) {
-    console.log(`Round ${i + 1}`);
-  }
 
   function playRound() {
-    // console.log("playRound() called");
     setPlayerChoice();
     setComputerChoice();
     updateScore();
     showRoundResults();
     logScore();
-  }
-
-  function logWinner() {
-    if (playerWins > computerWins) {
-      console.log("Player wins the game!");
-    } else if (playerWins < computerWins) {
-      console.log("Computer wins the game!");
-    } else {
-      console.log("It's a tie!");
-    }
   }
 
   function startGame() {
@@ -107,10 +67,6 @@ const Game = (function () {
     playerWins = 0;
     computerWins = 0;
     ties = 0;
-  }
-
-  function hello() {
-    console.log("Hello from Game");
   }
 
   return {
